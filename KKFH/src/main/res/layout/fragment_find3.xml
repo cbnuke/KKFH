@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/inner_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                 >
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+
+            android:scrollbars="none"
+            android:layout_alignParentTop="true"
+            >
+
+        <LinearLayout
+                android:id="@+id/topLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/titleText"
+                    android:textColor="#2e2e2e"
+                    android:text="                   ศูนย์บรรเทาทุกข์ผี"
+                    android:textSize="20dp"
+                    />
+
+            <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="215dp"
+                android:src="@drawable/home"
+                android:id="@+id/list_image2" />
+
+            <TextView
+                    android:id="@+id/Topic"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dip"
+                    android:background="#2e2e2e"
+                    android:gravity="left"
+                    android:paddingLeft="5dip"
+                    android:text="                            ข้อมูลศูนย์"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#ffff"
+                    android:textSize="20dp" />
+
+            <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/scrollView">
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Small Text"
+                            android:id="@+id/descriptionText"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Small Text"
+                            android:id="@+id/dateText"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="Small Text"
+                            android:id="@+id/list_images"/>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical" >
+
+        <Button
+                android:id="@+id/eiei"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:text="หาเส้นทาง"
+                android:background="#2e2e2e"
+                android:textColor="#ffffff"
+                android:singleLine="false"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
