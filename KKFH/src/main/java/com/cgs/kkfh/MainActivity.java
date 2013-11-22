@@ -7,7 +7,9 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -43,7 +45,21 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        Log.d("KKFH", "Create table");
+        //Chech register
+        SQLiteControl sql = new SQLiteControl(this);
+        sql.getWritableDatabase();
+        String data[] = sql.selectMember();
+
+        if (data == null) {
+            finish();
+            Intent i = new Intent(this, RegisterActivity.class);
+            startActivity(i);
+        }
+
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         final AlertDialog.Builder adb = new AlertDialog.Builder(this);
@@ -67,7 +83,7 @@ public class MainActivity extends Activity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
-        switch (position){
+        switch (position) {
             case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new TestActivity())

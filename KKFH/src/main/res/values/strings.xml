@@ -13,6 +13,10 @@
     <string name="app_exit">Do you want to exit?</string>
     <string name="app_exit_y">Yes</string>
     <string name="app_exit_n">No</string>
+    <string name="regtxt_name">Name</string>
+    <string name="regtxt_phone">Phone</string>
+    <string name="regtxt_cd">Congenital disease</string>
+    <string name="regbtn_signup">Sign Up</string>
 
     <string-array name="province_spin">
         <item>กรุงเทพมหานคร</item>

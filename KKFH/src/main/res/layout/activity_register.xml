@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_dark">
+
+    <ImageView
+        android:background="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textPersonName"
+        android:hint="@string/regtxt_name"
+        android:textColorHint="@android:color/white"
+        android:ems="10"
+        android:id="@+id/etReg_name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="phone"
+        android:hint="@string/regtxt_phone"
+        android:textColorHint="@android:color/white"
+        android:ems="10"
+        android:id="@+id/etReg_phone" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textMultiLine"
+        android:hint="@string/regtxt_cd"
+        android:textColorHint="@android:color/white"
+        android:ems="10"
+        android:id="@+id/etReg_cd" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/white"
+        android:text="@string/regbtn_signup"
+        android:textSize="30dp"
+        android:id="@+id/btnReg_signup"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/selector_btn_success" />
+
+</LinearLayout>
