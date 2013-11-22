@@ -19,9 +19,10 @@
         android:layout_margin="10dp"
         android:inputType="textPersonName"
         android:hint="@string/regtxt_name"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="#CCC"
         android:ems="10"
-        android:id="@+id/etReg_name" />
+        android:id="@+id/etReg_name"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:layout_width="match_parent"
@@ -29,9 +30,10 @@
         android:layout_margin="10dp"
         android:inputType="phone"
         android:hint="@string/regtxt_phone"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="#CCC"
         android:ems="10"
-        android:id="@+id/etReg_phone" />
+        android:id="@+id/etReg_phone"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:layout_width="match_parent"
@@ -39,9 +41,10 @@
         android:layout_margin="10dp"
         android:inputType="textMultiLine"
         android:hint="@string/regtxt_cd"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="#CCC"
         android:ems="10"
-        android:id="@+id/etReg_cd" />
+        android:id="@+id/etReg_cd"
+        android:textColor="@android:color/white" />
 
     <Button
         android:layout_width="match_parent"

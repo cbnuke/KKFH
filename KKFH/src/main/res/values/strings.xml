@@ -9,7 +9,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Change profile</string>
     <string name="app_exit">Do you want to exit?</string>
     <string name="app_exit_y">Yes</string>
     <string name="app_exit_n">No</string>
@@ -17,6 +17,7 @@
     <string name="regtxt_phone">Phone</string>
     <string name="regtxt_cd">Congenital disease</string>
     <string name="regbtn_signup">Sign Up</string>
+    <string name="regbtn_signup_change">Update</string>
 
     <string-array name="province_spin">
         <item>กรุงเทพมหานคร</item>
