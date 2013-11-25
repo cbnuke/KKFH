@@ -1,6 +1,5 @@
 package com.cgs.kkfh;
 
-;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
