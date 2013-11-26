@@ -21,8 +21,10 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -69,11 +71,9 @@ public class FindActivityDetail extends Fragment {
         mImageView = (ImageView) view.findViewById(R.id.list_image2);
 
         String url = "http://farmacia-store.com/lotte/img/f" + imgText + ".jpg";
-        BitmapFactory.Options bmOptions;
-        bmOptions = new BitmapFactory.Options();
-        bmOptions.inSampleSize = 1;
-        Bitmap bm = loadBitmap(url, bmOptions);
-        mImageView.setImageBitmap(bm);
+
+        ImageLoader imageLoader = new ImageLoader(getActivity());
+        imageLoader.DisplayImage(url,mImageView,1);
 
         mTitleText.setText(title);
         mDateText.setText(date);
@@ -81,50 +81,4 @@ public class FindActivityDetail extends Fragment {
 
         return view;
     }
-
-    public static Bitmap loadBitmap(String URL, BitmapFactory.Options options) {
-        Bitmap bitmap = null;
-        InputStream in = null;
-        try {
-            in = OpenHttpConnection(URL);
-            bitmap = BitmapFactory.decodeStream(in, null, options);
-            in.close();
-        } catch (IOException e1) {
-        }
-        return bitmap;
-    }
-
-    private static InputStream OpenHttpConnection(String strURL)
-            throws IOException {
-        InputStream inputStream = null;
-        URL url = new URL(strURL);
-        URLConnection conn = url.openConnection();
-
-        try {
-            HttpURLConnection httpConn = (HttpURLConnection) conn;
-            httpConn.setRequestMethod("GET");
-            httpConn.connect();
-
-            if (httpConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                inputStream = httpConn.getInputStream();
-            }
-        } catch (Exception ex) {
-        }
-        return inputStream;
-    }
-
-
-    private void bindWidgets() {
-
-        // TODO Auto-generated method stub
-        // Displaying all values on the screen
-
-
-    }
-
-    private void setWidgetEventListener() {
-        // TODO Auto-generated method stub
-
-    }
-
 }

@@ -2,7 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#eeeeee">
 
     <ImageView
         android:layout_width="335dp"
@@ -19,4 +20,13 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/selector_btn_success"
         android:textColor="#ffffff" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="57dp"
+        android:background="@drawable/bg_card_ui"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"></LinearLayout>
 </RelativeLayout>

@@ -53,15 +53,12 @@ public class LazyAdapter extends BaseAdapter {
         ImageView mThumb_image = (ImageView) vi.findViewById(R.id.list_image); // image
 
 
-
-
         HashMap<String, String> news = new HashMap<String, String>();
         news = data.get(position);
 
         // Setting all values in listview
         // Log.d("test", song.get(CustomizedListView.KEY_TITLE));
         mTitle.setText(news.get(Find_listview.KEY_TITLE));
-        Log.d("Show ", " TEXT  "+ news.get(Find_listview.KEY_TITLE));
         mDescription.setText(news.get(Find_listview.KEY_DESCRIPTION));// not
         // show
         mUpdate.setText(news.get(Find_listview.KEY_UPDATE));
@@ -69,12 +66,9 @@ public class LazyAdapter extends BaseAdapter {
         mImg.setText(news.get(Find_listview.KEY_ID));
         imageLoader.DisplayImage(news.get(Find_listview.KEY_THUMB_URL),
                 mThumb_image);
-
-
-
-        Log.d("Show IMG ", " TEXT  "+ news.get(Find_listview.KEY_ID));
-
-
+//        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_TITLE));
+//        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_ID));
+//        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_THUMB_URL));
         return vi;
     }
 

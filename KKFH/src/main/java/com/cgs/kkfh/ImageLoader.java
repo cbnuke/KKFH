@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -18,9 +19,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.ImageView;
 
 public class ImageLoader {
+
+    private int value_samplesize = 0;
 
     MemoryCache memoryCache = new MemoryCache();
     FileCache fileCache;
@@ -30,7 +34,7 @@ public class ImageLoader {
 
     public ImageLoader(Context context) {
         fileCache = new FileCache(context);
-        executorService = Executors.newFixedThreadPool(5);
+        executorService = Executors.newFixedThreadPool(9);
     }
 
     final int stub_id = R.drawable.no_image;
@@ -39,9 +43,22 @@ public class ImageLoader {
         //url = "http://www.sc.kku.ac.th/scienceweb/images/news/" + url;
         imageViews.put(imageView, url);
         Bitmap bitmap = memoryCache.get(url);
-        if (bitmap != null)
+        if (bitmap != null) {
             imageView.setImageBitmap(bitmap);
-        else {
+        } else {
+            queuePhoto(url, imageView);
+            imageView.setImageResource(stub_id);
+        }
+    }
+
+    public void DisplayImage(String url, ImageView imageView, int size) {
+        value_samplesize = size;
+        //url = "http://www.sc.kku.ac.th/scienceweb/images/news/" + url;
+        imageViews.put(imageView, url);
+        Bitmap bitmap = memoryCache.get(url);
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap);
+        } else {
             queuePhoto(url, imageView);
             imageView.setImageResource(stub_id);
         }
@@ -77,6 +94,7 @@ public class ImageLoader {
             return bitmap;
         } catch (Exception ex) {
             ex.printStackTrace();
+            Log.d("KKFHD", " LoadImage Fail "+url);
             return null;
         }
     }
@@ -104,9 +122,15 @@ public class ImageLoader {
 
             // decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
+
+            if(value_samplesize!=0){
+                o2.inSampleSize = value_samplesize;
+            }else {
+                o2.inSampleSize = scale;
+            }
             return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
         } catch (FileNotFoundException e) {
+            Log.d("KKFHD", " decodeFile Fail.");
         }
         return null;
     }
@@ -134,6 +158,7 @@ public class ImageLoader {
             if (imageViewReused(photoToLoad))
                 return;
             Bitmap bmp = getBitmap(photoToLoad.url);
+
             memoryCache.put(photoToLoad.url, bmp);
             if (imageViewReused(photoToLoad))
                 return;

@@ -117,17 +117,13 @@ public class Find_listview extends Fragment implements OnClickListener {
                 data.putString(KEY_DESCRIPTION, description);
                 data.putString(KEY_THUMB_URL, img);
 
-                Log.d("TEST","11");
                 Fragment fm = new FindActivityDetail();
                 fm.setArguments(data);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.container,fm);
                 ft.commit();
-
-                Log.d("TEST","22");
             }
         });
-
         return view;
     }
 
