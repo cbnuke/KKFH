@@ -18,6 +18,12 @@
     <string name="regtxt_cd">Congenital disease</string>
     <string name="regbtn_signup">Sign Up</string>
     <string name="regbtn_signup_change">Update</string>
+    <string name="help">Help me</string>
+    <string name="report">Report flood</string>
+    <string name="send">Send</string>
+    <string name="back">Back</string>
+    <string name="water_level">Water level at your location.</string>
+    <string name="meter">meter</string>
 
     <string-array name="province_spin">
         <item>กรุงเทพมหานคร</item>
