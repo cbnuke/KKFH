@@ -57,15 +57,11 @@ public class LazyAdapter extends BaseAdapter {
         news = data.get(position);
 
         // Setting all values in listview
-        // Log.d("test", song.get(CustomizedListView.KEY_TITLE));
-        mTitle.setText(news.get(Find_listview.KEY_TITLE));
-        mDescription.setText(news.get(Find_listview.KEY_DESCRIPTION));// not
-        // show
-        mUpdate.setText(news.get(Find_listview.KEY_UPDATE));
-        //mImg.setText(news.get(Food_list.KEY_THUMB_URL));// not show
-        mImg.setText(news.get(Find_listview.KEY_ID));
-        imageLoader.DisplayImage(news.get(Find_listview.KEY_THUMB_URL),
-                mThumb_image);
+        mTitle.setText(news.get(Find_listview.KEY_NAME));
+        mDescription.setText(news.get(Find_listview.KEY_DESCRIPTION));
+        mUpdate.setText(news.get(Find_listview.KEY_MAX_PEOPLE));
+
+        imageLoader.DisplayImage(news.get(Find_listview.KEY_THUMB_URL),mThumb_image);
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_TITLE));
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_ID));
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_THUMB_URL));

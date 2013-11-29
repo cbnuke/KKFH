@@ -34,13 +34,25 @@ public class Find_listview extends Fragment implements OnClickListener {
     private String URL = "";
 
     // XML node keys
-    static final String KEY_TOPIC = "topic"; // parent node
-    static final String KEY_ID = "topicID";
-    static final String KEY_TITLE = "title";
-    static final String KEY_DESCRIPTION = "description";
     static final String KEY_THUMB_URL = "img";
-    static final String KEY_UPDATE = "updated";
+    static final String KEY_STATUS = "status";
+    static final String KEY_WATERZERO = "waterzero";
+    static final String KEY_WATERSTORE = "waterstore";
+    static final String KEY_ID = "id";
+    static final String KEY_NAME = "name";
+    static final String KEY_DESCRIPTION = "description";
+    static final String KEY_LOC = "loc";
+    static final String KEY_L_ID = "l_id";
+    static final String KEY_DATE = "date";
+    static final String KEY_TEL = "tel";
+    static final String KEY_IN_PEOPLE = "in_people";
+    static final String KEY_OUT_PEOPLE = "out_people";
+    static final String KEY_MAX_PEOPLE = "max_people";
 
+    //Data
+    static final String DATA_L_ID = "l_id";
+    static final String DATA_PEOPLE = "people";
+    static final String DATA_PATIENT_PEOPLE = "patient_people";
 
     ListView list;
     LazyAdapter adapter;
@@ -50,36 +62,54 @@ public class Find_listview extends Fragment implements OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find2, container, false);
 
+        String l_id = this.getArguments().getString(DATA_L_ID);
+        String people = this.getArguments().getString(DATA_PEOPLE);
+        String patient_people = this.getArguments().getString(DATA_PATIENT_PEOPLE);
+
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy =
                     new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
 
-        this.URL = "http://farmacia-store.com/select_food3.php";
+        this.URL = "http://kunmee.com/gcon/waterzero.php?id="+l_id;
 
-        ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
 
         XMLParser parser = new XMLParser();
         String xml = parser.getXmlFromUrl(URL); // getting XML from URL
         Document doc = parser.getDomElement(xml); // getting DOM element
-        Log.d("error", " 5 ");
-        NodeList nl = doc.getElementsByTagName(KEY_TOPIC);
-        // looping through all song nodes <song>
-        for (int i = 0; i < nl.getLength(); i++) {
-            // creating new HashMap
-            HashMap<String, String> map = new HashMap<String, String>();
-            Element e = (Element) nl.item(i);
-            // adding each child node to HashMap key => value
-            map.put(KEY_ID, parser.getValue(e, KEY_ID));
-            map.put(KEY_TITLE, parser.getValue(e, KEY_TITLE));
-            map.put(KEY_DESCRIPTION, parser.getValue(e, KEY_DESCRIPTION));
-            map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
-            map.put(KEY_UPDATE, parser.getValue(e, KEY_UPDATE));
 
 
-            // adding HashList to ArrayList
-            songsList.add(map);
+        NodeList n_check = doc.getElementsByTagName(KEY_WATERZERO);
+        Element e_ncheck = (Element) n_check.item(0);
+        String status = parser.getValue(e_ncheck, KEY_STATUS);
+
+        if (status.equalsIgnoreCase("true")) {
+            NodeList nl = doc.getElementsByTagName(KEY_WATERSTORE);
+            // looping through all song nodes <song>
+            for (int i = 0; i < nl.getLength(); i++) {
+                // creating new HashMap
+                HashMap<String, String> map = new HashMap<String, String>();
+                Element e = (Element) nl.item(i);
+                // adding each child node to HashMap key => value
+                map.put(KEY_ID, parser.getValue(e, KEY_ID));
+                map.put(KEY_NAME, parser.getValue(e, KEY_NAME));
+                map.put(KEY_DESCRIPTION, parser.getValue(e, KEY_DESCRIPTION));
+                map.put(KEY_LOC, parser.getValue(e, KEY_LOC));
+                map.put(KEY_L_ID, parser.getValue(e, KEY_L_ID));
+                map.put(KEY_DATE, parser.getValue(e, KEY_DATE));
+                map.put(KEY_TEL, parser.getValue(e, KEY_TEL));
+                map.put(KEY_IN_PEOPLE, parser.getValue(e, KEY_IN_PEOPLE));
+                map.put(KEY_OUT_PEOPLE, parser.getValue(e, KEY_OUT_PEOPLE));
+                map.put(KEY_MAX_PEOPLE, parser.getValue(e, KEY_MAX_PEOPLE));
+                map.put(KEY_THUMB_URL,"http://kunmee.com/gcon/img1/"+parser.getValue(e, KEY_ID)+".jpg");
+
+                // adding HashList to ArrayList
+                dataList.add(map);
+            }
+        }else {
+            Log.d("KKFHD","5");
         }
 
         list = (ListView) view.findViewById(R.id.list);
@@ -88,7 +118,7 @@ public class Find_listview extends Fragment implements OnClickListener {
         back.setOnClickListener(this);
 
         // Getting adapter by passing xml data ArrayList
-        adapter = new LazyAdapter(getActivity(), songsList);
+        adapter = new LazyAdapter(getActivity(), dataList);
 
         list.setAdapter(adapter);
 
@@ -112,15 +142,15 @@ public class Find_listview extends Fragment implements OnClickListener {
                         .toString();
 
                 Bundle data = new Bundle();
-                data.putString(KEY_TITLE, title);
-                data.putString(KEY_UPDATE, update);
+                data.putString(KEY_NAME, title);
+                data.putString(KEY_MAX_PEOPLE, update);
                 data.putString(KEY_DESCRIPTION, description);
                 data.putString(KEY_THUMB_URL, img);
 
                 Fragment fm = new FindActivityDetail();
                 fm.setArguments(data);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.container,fm);
+                ft.replace(R.id.container, fm);
                 ft.commit();
             }
         });
