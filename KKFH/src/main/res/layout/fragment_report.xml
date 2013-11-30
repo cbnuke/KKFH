@@ -19,17 +19,17 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/send"
-            android:id="@+id/button"
             android:singleLine="false"
             android:background="@drawable/selector_btn_success"
             android:layout_marginRight="10dp"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:id="@+id/btnR_send" />
 
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/back"
-            android:id="@+id/button2"
+            android:id="@+id/btnR_back"
             android:background="@drawable/selector_btn_primary"
             android:layout_marginLeft="10dp"
             android:textColor="#ffffff" />
@@ -48,8 +48,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/water_level"
             android:id="@+id/textView"
-            android:layout_alignBaseline="@+id/editText"
-            android:layout_alignBottom="@+id/editText"
+            android:layout_alignBaseline="@+id/editR_height"
+            android:layout_alignBottom="@+id/editR_height"
             android:layout_alignParentLeft="true" />
 
         <LinearLayout
@@ -63,9 +63,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/editR_height"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
