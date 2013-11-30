@@ -1,113 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp">
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp">
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="ค้นหาศูนย์ใกล้เคียง"
-                android:id="@+id/textView"
-                android:layout_gravity="center"
-                android:textSize="25dp"
-                android:layout_marginTop="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="ค้นหาศูนย์ใกล้เคียง"
+            android:id="@+id/textView"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 
     <LinearLayout
-            android:orientation="vertical"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-        <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="10dp">
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp">
 
             <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="จำนวนคน"
-                    android:id="@+id/textView2"
-                    android:layout_weight="0.73"
-                    android:layout_marginRight="-21dp"
-                    android:layout_marginLeft="15dp"/>
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="จำนวนคน"
+                android:id="@+id/textView2"
+                android:layout_weight="0.73"
+                android:layout_marginRight="-21dp"
+                android:layout_marginLeft="15dp" />
 
             <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Name"
-                    android:ems="10"
-                    android:id="@+id/editText"
-                    android:layout_marginRight="10dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="1"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:layout_marginRight="10dp"
+                android:numeric="integer"
+                android:gravity="center_horizontal" />
 
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/linearLayout"
-                android:layout_marginTop="20dp">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout"
+            android:layout_marginTop="20dp">
 
             <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="จำนวนคนป่วย"
-                    android:id="@+id/textView3"
-                    android:layout_weight="0.73"
-                    android:layout_marginRight="-21dp"
-                    android:layout_marginLeft="15dp"/>
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="จำนวนคนป่วย"
+                android:id="@+id/textView3"
+                android:layout_weight="0.73"
+                android:layout_marginRight="-21dp"
+                android:layout_marginLeft="15dp" />
 
             <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Name"
-                    android:ems="10"
-                    android:id="@+id/editText2"
-                    android:layout_marginRight="10dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="30dp">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="เลือกจังหวัด"
-                    android:id="@+id/textView4"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"/>
-
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center">
-            </LinearLayout>
-
-            <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner1"
-                    android:layout_marginTop="15dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="0"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:layout_marginRight="10dp"
+                android:numeric="integer"
+                android:gravity="center_horizontal" />
 
         </LinearLayout>
 
@@ -118,17 +92,41 @@
         android:layout_height="fill_parent">
 
         <Button
-                android:id="@+id/eiei"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+            android:id="@+id/eiei"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
 
-                android:text="ต่อไป"
-                android:background="@drawable/selector_btn_danger_long"
-                android:textColor="#ffffff"
-                android:singleLine="false"
-                android:layout_gravity="bottom"
+            android:text="ต่อไป"
+            android:background="@drawable/selector_btn_danger_long"
+            android:textColor="#ffffff"
+            android:singleLine="false"
+            android:layout_gravity="bottom"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="เลือกจังหวัด"
+                android:id="@+id/textView4"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner1"
+                android:layout_marginTop="15dp" />
+
+        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

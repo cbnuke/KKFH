@@ -73,7 +73,7 @@ public class SQLiteControl extends SQLiteOpenHelper {
 
     public String[] selectMember() {
         try {
-            String data[] = new String[1];
+            String data[] = new String[4];
 
             SQLiteDatabase db;
             db = this.getReadableDatabase();
@@ -84,9 +84,9 @@ public class SQLiteControl extends SQLiteOpenHelper {
             if (cursor != null && cursor.moveToFirst()) {
                 Log.d("KKFHD", "Select data");
                 data[0] = cursor.getString(0);
-                data[0] = cursor.getString(1);
-                data[0] = cursor.getString(2);
-                data[0] = cursor.getString(3);
+                data[1] = cursor.getString(1);
+                data[2] = cursor.getString(2);
+                data[3] = cursor.getString(3);
             } else {
                 data[0] = "0";
             }

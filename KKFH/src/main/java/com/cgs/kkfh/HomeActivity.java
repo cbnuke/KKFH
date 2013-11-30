@@ -31,6 +31,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,10 +89,18 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
         builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Log.d("KKFHD", Integer.toString(number_picker));
-                if(helpData(number_picker)){
-                    Toast.makeText(getActivity(),"Success and wait for help",Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(getActivity(),"Fail please try again",Toast.LENGTH_LONG).show();
+                if (helpData(number_picker)) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity())
+                            .setTitle("Success")
+                            .setMessage("Request success and please wait for help");
+                    builder1.setPositiveButton("OK",null);
+                    builder1.show();
+                } else {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity())
+                            .setTitle("Fail")
+                            .setMessage("Request fail please tyr again");
+                    builder1.setPositiveButton("OK",null);
+                    builder1.show();
                 }
             }
         });
@@ -118,7 +130,6 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
         if (data == null) {
             return false;
         }
-        Log.d("KKFHD", "11");
 
         //Set policy for 4.0 up
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -126,39 +137,61 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
                     new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-        Log.d("KKFHD", "22");
-        // Create a new HttpClient and Post Header
-        HttpClient httpclient = new DefaultHttpClient();
-        Log.d("KKFHD", "221");
-        HttpPost httppost = new HttpPost("http://kunmee.com/gcon/insert_help.php");
-        Log.d("KKFHD", "222");
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        Log.d("KKFHD", "223");
+
+        //Get location from GPS
+
         try {
-            // Add your data
-            nameValuePairs.add(new BasicNameValuePair("h_name", data[1]));
-            Log.d("KKFHD", "331");
-            nameValuePairs.add(new BasicNameValuePair("tel", data[2]));
-            Log.d("KKFHD", "332");
-            nameValuePairs.add(new BasicNameValuePair("people", Integer.toString(people)));
-            Log.d("KKFHD", "333");
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            Log.d("KKFHD", "33");
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            InputStream is = entity.getContent();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
-            String w_data = bufferedReader.readLine();
-            Log.d("KKFHD", "44");
-            if(w_data.equalsIgnoreCase("success")){
+            // Create data variable for sent values to server
+            String post_data = URLEncoder.encode("h_name", "UTF-8")
+                    + "=" + URLEncoder.encode(data[1], "UTF-8");
+
+            post_data += "&" + URLEncoder.encode("tel", "UTF-8") + "="
+                    + URLEncoder.encode(data[2], "UTF-8");
+
+            post_data += "&" + URLEncoder.encode("people", "UTF-8")
+                    + "=" + URLEncoder.encode(Integer.toString(people), "UTF-8");
+
+            post_data += "&" + URLEncoder.encode("disease", "UTF-8")
+                    + "=" + URLEncoder.encode(data[3], "UTF-8");
+
+            post_data += "&" + URLEncoder.encode("h_lat", "UTF-8")
+                    + "=" + URLEncoder.encode(Double.toString(MainActivity.l_lat), "UTF-8");
+
+            post_data += "&" + URLEncoder.encode("h_long", "UTF-8")
+                    + "=" + URLEncoder.encode(Double.toString(MainActivity.l_long), "UTF-8");
+
+            String text = "";
+            BufferedReader reader = null;
+
+            // Send data
+            // Defined URL  where to send data
+            URL url = new URL("http://kunmee.com/gcon/insert_help.php");
+
+            // Send POST data request
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(post_data);
+            wr.flush();
+
+            // Get the server response
+            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            // Read Server Response
+            while ((line = reader.readLine()) != null) {
+                // Append server response in string
+                sb.append(line);
+            }
+
+            text = sb.toString();
+            if (text.equalsIgnoreCase("success")) {
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        } catch (ClientProtocolException e) {
-            return false;
-        } catch (IOException e) {
+        } catch (Exception ex) {
             return false;
         }
     }

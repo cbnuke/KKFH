@@ -6,8 +6,12 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -18,9 +22,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    /**
+     * Location update every time for use.
+     */
+    public static double l_lat;
+    public static double l_long;
+    Location location; // location
+    // The minimum distance to change Updates in meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
+
+    // The minimum time between updates in milliseconds
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 5;
+
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -36,6 +54,12 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /**
+         * Initial GPS
+         */
+        InitialGPS();
+
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -214,4 +238,73 @@ public class MainActivity extends Activity
         }
     }
 
+    public void InitialGPS() {
+
+        /* Use the LocationManager class to obtain GPS locations */
+        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        // getting GPS status
+        boolean isGPSEnabled = mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        // getting network status
+        boolean isNetworkEnabled = mlocManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        if (!isGPSEnabled && !isNetworkEnabled) {
+            // no network provider is enabled
+        } else {
+            // First get location from Network Provider
+            if (isNetworkEnabled) {
+                LocationListener mlocListener = new MyLocationListener();
+                mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,
+                        MIN_DISTANCE_CHANGE_FOR_UPDATES, mlocListener);
+                if (mlocListener != null) {
+                    location = mlocManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                }
+            }
+            // if GPS Enabled get lat/long using GPS Services
+            if (isGPSEnabled) {
+                if (location == null) {
+                    LocationListener mlocListener = new MyLocationListener();
+                    mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
+                            MIN_DISTANCE_CHANGE_FOR_UPDATES, mlocListener);
+                    Log.d("GPS Enabled", "GPS Enabled");
+                    if (mlocListener != null) {
+                        location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    }
+                }
+            }
+        }
+    }
+
+    /* Class My Location Listener */
+    public class MyLocationListener implements LocationListener {
+
+        @Override
+        public void onLocationChanged(Location loc) {
+
+            l_lat = loc.getLatitude();
+            l_long = loc.getLongitude();
+
+            String Text = "My current location is: " +
+                    "Latitud = " + loc.getLatitude() +
+                    "Longitud = " + loc.getLongitude();
+
+            Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            Toast.makeText(getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            Toast.makeText(getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+    }
 }

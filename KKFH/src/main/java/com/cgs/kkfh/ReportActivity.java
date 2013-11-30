@@ -42,7 +42,14 @@ public class ReportActivity extends Fragment implements View.OnClickListener{
                 break;
             case R.id.btnR_send:
                 String txt = edit_height.getText().toString();
-                Toast.makeText(getActivity(),"Height:"+txt,Toast.LENGTH_LONG).show();
+                if(!txt.isEmpty()){
+                Toast.makeText(getActivity(),"Thank you for your report",Toast.LENGTH_LONG).show();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new HomeActivity())
+                        .commit();
+                }else{
+                    Toast.makeText(getActivity(),"Please fill water level",Toast.LENGTH_LONG).show();
+                }
                 break;
         }
     }
