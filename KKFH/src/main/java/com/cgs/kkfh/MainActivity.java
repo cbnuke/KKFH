@@ -12,7 +12,10 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -21,11 +24,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, LocationListener {
 
     /**
      * Location update every time for use.
@@ -36,8 +40,10 @@ public class MainActivity extends Activity
     // The minimum distance to change Updates in meters
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 
-    // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 5;
+    // The 10 second time between updates in milliseconds
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 10;
+
+    private static LocationManager mlocManager;
 
 
     /**
@@ -166,6 +172,43 @@ public class MainActivity extends Activity
         actionBar.setTitle(mTitle);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Destroy GPS when Pause
+        mlocManager.removeUpdates(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Active GPS when Resume
+        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
+                MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+
+        //Check Location setting enable
+        boolean enabled = mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!enabled) {
+            finish();
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+
+        }
+        //Check Internet
+        ConnectivityManager cm = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        if (!isConnected) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Request internet connect")
+                    .setMessage("Please check your internet connect")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).show();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -241,7 +284,7 @@ public class MainActivity extends Activity
     public void InitialGPS() {
 
         /* Use the LocationManager class to obtain GPS locations */
-        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         // getting GPS status
         boolean isGPSEnabled = mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -252,23 +295,12 @@ public class MainActivity extends Activity
         if (!isGPSEnabled && !isNetworkEnabled) {
             // no network provider is enabled
         } else {
-            // First get location from Network Provider
-            if (isNetworkEnabled) {
-                LocationListener mlocListener = new MyLocationListener();
-                mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES,
-                        MIN_DISTANCE_CHANGE_FOR_UPDATES, mlocListener);
-                if (mlocListener != null) {
-                    location = mlocManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                }
-            }
-            // if GPS Enabled get lat/long using GPS Services
             if (isGPSEnabled) {
                 if (location == null) {
-                    LocationListener mlocListener = new MyLocationListener();
                     mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
-                            MIN_DISTANCE_CHANGE_FOR_UPDATES, mlocListener);
+                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
                     Log.d("GPS Enabled", "GPS Enabled");
-                    if (mlocListener != null) {
+                    if (location != null) {
                         location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                     }
                 }
@@ -276,35 +308,31 @@ public class MainActivity extends Activity
         }
     }
 
-    /* Class My Location Listener */
-    public class MyLocationListener implements LocationListener {
+    @Override
+    public void onLocationChanged(Location loc) {
 
-        @Override
-        public void onLocationChanged(Location loc) {
+        l_lat = loc.getLatitude();
+        l_long = loc.getLongitude();
 
-            l_lat = loc.getLatitude();
-            l_long = loc.getLongitude();
+        String Text = "My current location is: " +
+                "Latitud = " + loc.getLatitude() +
+                "Longitud = " + loc.getLongitude();
 
-            String Text = "My current location is: " +
-                    "Latitud = " + loc.getLatitude() +
-                    "Longitud = " + loc.getLongitude();
+        Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
+    }
 
-            Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT).show();
+    }
 
-        @Override
-        public void onProviderDisabled(String provider) {
-            Toast.makeText(getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
+    }
 
-        @Override
-        public void onProviderEnabled(String provider) {
-            Toast.makeText(getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
 
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
     }
 }

@@ -98,7 +98,7 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
                 } else {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity())
                             .setTitle("Fail")
-                            .setMessage("Request fail please tyr again");
+                            .setMessage("Can't find your location please try again");
                     builder1.setPositiveButton("OK",null);
                     builder1.show();
                 }
@@ -138,8 +138,12 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
             StrictMode.setThreadPolicy(policy);
         }
 
-        //Get location from GPS
+        //Check location empty
+        if(MainActivity.l_lat==0.0||MainActivity.l_long==0){
+            return false;
+        }
 
+        //Get location from GPS
         try {
             // Create data variable for sent values to server
             String post_data = URLEncoder.encode("h_name", "UTF-8")

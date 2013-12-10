@@ -118,7 +118,7 @@ public class Find_listview extends Fragment implements OnClickListener {
         back.setOnClickListener(this);
 
         // Getting adapter by passing xml data ArrayList
-        adapter = new LazyAdapter(getActivity(), dataList);
+        LazyAdapter adapter = new LazyAdapter(getActivity(), dataList);
 
         list.setAdapter(adapter);
 
