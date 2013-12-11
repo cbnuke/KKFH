@@ -75,31 +75,33 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
     }
 
     private void Help() {
+        /*string Text HomeActivity*/
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                .setTitle("People")
-                .setMessage("How many people want to help");
+                .setTitle(getString(R.string.title_helpActivity))
+                .setMessage(getString(R.string.msg_helpActivity));
 
         final FrameLayout frameView = new FrameLayout(getActivity());
         builder.setView(frameView);
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.cancel_helpActivity), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
             }
         });
-        builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+        /*string Text HomeActivity*/
+        builder.setPositiveButton(getString(R.string.send_helpActivity), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Log.d("KKFHD", Integer.toString(number_picker));
                 if (helpData(number_picker)) {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity())
-                            .setTitle("Success")
-                            .setMessage("Request success and please wait for help");
-                    builder1.setPositiveButton("OK",null);
+                            .setTitle(getString(R.string.success_helpActivity))
+                            .setMessage(getString(R.string.successMsg_helpActivity));
+                    builder1.setPositiveButton(getString(R.string.ok_helpActivity), null);
                     builder1.show();
                 } else {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity())
-                            .setTitle("Fail")
-                            .setMessage("Can't find your location please try again");
-                    builder1.setPositiveButton("OK",null);
+                            .setTitle(getString(R.string.fail_helpActivity))
+                            .setMessage(getString(R.string.failMsg_helpActivity));
+                    builder1.setPositiveButton(getString(R.string.ok_helpActivity), null);
                     builder1.show();
                 }
             }
@@ -139,7 +141,7 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
         }
 
         //Check location empty
-        if(MainActivity.l_lat==0.0||MainActivity.l_long==0){
+        if (MainActivity.l_lat == 0.0 || MainActivity.l_long == 0) {
             return false;
         }
 

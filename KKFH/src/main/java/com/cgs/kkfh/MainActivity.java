@@ -196,7 +196,7 @@ public class MainActivity extends Activity
             new AlertDialog.Builder(this)
                     .setTitle("Request internet connect")
                     .setMessage("Please check your internet connect")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.app_exit_y), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
                         }
@@ -266,21 +266,24 @@ public class MainActivity extends Activity
         l_lat = loc.getLatitude();
         l_long = loc.getLongitude();
 
-        String Text = "My current location is: " +
-                "Latitud = " + loc.getLatitude() +
-                "Longitud = " + loc.getLongitude();
+        /*string Text MainActivity*/
+        String Text = getString(R.string.text_MainActivity) +
+                getString(R.string.la_MainActivity) + loc.getLatitude() +
+                getString(R.string.long_MainActivity) + loc.getLongitude();
 
         Toast.makeText(getApplicationContext(), Text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        Toast.makeText(getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT).show();
+        /*string Text MainActivity*/
+        Toast.makeText(getApplicationContext(), getString(R.string.toast1_MainActivity), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        Toast.makeText(getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT).show();
+        /*string Text MainActivity*/
+        Toast.makeText(getApplicationContext(), getString(R.string.toast2_MainActivity), Toast.LENGTH_SHORT).show();
     }
 
     @Override

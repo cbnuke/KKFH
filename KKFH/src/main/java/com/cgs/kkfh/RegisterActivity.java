@@ -38,17 +38,17 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             String disease = txt_disease.getText().toString();
 
             if (name.isEmpty() || phone.isEmpty() || disease.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Please fill all of information.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.toast1_RegActivity), Toast.LENGTH_LONG).show();
             } else {
                 SQLiteControl db = new SQLiteControl(this);
                 db.getWritableDatabase();
                 if (db.insertData(name, phone, disease)) {
-                    Toast.makeText(getApplicationContext(), "Register complete.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toast2_RegActivity), Toast.LENGTH_LONG).show();
                     finish();
-                    Intent i = new Intent(this,MainActivity.class);
+                    Intent i = new Intent(this, MainActivity.class);
                     startActivity(i);
-                }else{
-                    Toast.makeText(getApplicationContext(), "Register fail.", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.toast3_RegActivity), Toast.LENGTH_LONG).show();
                 }
             }
         }

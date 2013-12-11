@@ -15,11 +15,12 @@ import android.widget.Toast;
 /**
  * Created by cbnuke on 11/23/13 AD.
  */
-public class ChangeProfileActivity extends Fragment implements View.OnClickListener{
+public class ChangeProfileActivity extends Fragment implements View.OnClickListener {
     TextView txt_name;
     TextView txt_phone;
     TextView txt_disease;
     Button btn_sign;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -43,19 +44,22 @@ public class ChangeProfileActivity extends Fragment implements View.OnClickListe
             String disease = txt_disease.getText().toString();
 
             if (name.isEmpty() || phone.isEmpty() || disease.isEmpty()) {
-                Toast.makeText(getActivity(), "Please fill all of information.", Toast.LENGTH_LONG).show();
+                /*toast1_changeProfile*/
+                Toast.makeText(getActivity(), getString(R.string.toast1_changeProfile), Toast.LENGTH_LONG).show();
             } else {
                 SQLiteControl db = new SQLiteControl(getActivity());
                 db.getWritableDatabase();
                 if (db.updateData(name, phone, disease)) {
-                    Toast.makeText(getActivity(), "Update complete.", Toast.LENGTH_LONG).show();
+                    /*toast2_changeProfile*/
+                    Toast.makeText(getActivity(), getString(R.string.toast2_changeProfile), Toast.LENGTH_LONG).show();
 
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, new HomeActivity())
                             .commit();
-                }else{
-                    Toast.makeText(getActivity(), "Update fail.", Toast.LENGTH_LONG).show();
+                } else {
+                    /*toast3_changeProfile*/
+                    Toast.makeText(getActivity(), getString(R.string.toast3_changeProfile), Toast.LENGTH_LONG).show();
                 }
             }
         }

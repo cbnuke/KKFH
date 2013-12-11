@@ -25,6 +25,41 @@
     <string name="water_level">Water level at your location.</string>
     <string name="meter">meter</string>
 
+    <!--string Toast RegisterActivity-->
+    <string name="toast1_RegActivity">Please fill all of information.</string>
+    <string name="toast2_RegActivity">Register complete.</string>
+    <string name="toast3_RegActivity">Register fail.</string>
+
+    <!--string Text Navigation-->
+    <string name="text_Nevigation">Activity must implement NavigationDrawerCallbacks.</string>
+
+    <!--string Toast ReportActivity-->
+    <string name="toast1_reportActivity">Thank you for your report</string>
+    <string name="toast2_reportActivity">Please fill water level</string>
+
+    <!--string Text MainActivity-->
+    <string name="text_MainActivity">My current location is: </string>
+    <string name="la_MainActivity">Latitude</string>
+    <string name="long_MainActivity">Longitude</string>
+    <string name="toast1_MainActivity">Gps Disabled</string>
+    <string name="toast2_MainActivity">Gps Enabled</string>
+
+    <!--string Text HomeActivity-->
+    <string name="title_helpActivity">People</string>
+    <string name="msg_helpActivity">How many people want to help</string>
+    <string name="cancel_helpActivity">Cancel</string>
+    <string name="send_helpActivity">Send</string>
+    <string name="success_helpActivity">Success</string>
+    <string name="successMsg_helpActivity">Request success and please wait for help</string>
+    <string name="fail_helpActivity">Fail</string>
+    <string name="failMsg_helpActivity">Can\'t find your location please try again</string>
+    <string name="ok_helpActivity">OK</string>
+
+    <!--string Toast ChangeProfileActivity-->
+    <string name="toast1_changeProfile">Please fill all of information.</string>
+    <string name="toast2_changeProfile">Update complete.</string>
+    <string name="toast3_changeProfile">Update fail.</string>
+
     <string-array name="province_spin">
         <item>กรุงเทพมหานคร</item>
         <item>กระบี่</item>
@@ -71,7 +106,7 @@
         <item>มหาสารคาม</item>
         <item>มุกดาหาร</item>
         <item>แม่ฮ่องสอน</item>
-        <item> ยะลา</item>
+        <item>ยะลา</item>
         <item>ยโสธร</item>
         <item>ร้อยเอ็ด</item>
         <item>ระนอง</item>
@@ -96,12 +131,12 @@
         <item>สุราษฎร์ธานี</item>
         <item>สุรินทร์</item>
         <item>หนองคาย</item>
-        <item> หนองบัวลำภู</item>
+        <item>หนองบัวลำภู</item>
         <item>อ่างทอง</item>
         <item>อุดรธานี</item>
         <item>อุทัยธานี</item>
         <item>อุตรดิตถ์</item>
-        <item> อุบลราชธานี</item>
+        <item>อุบลราชธานี</item>
         <item>อำนาจเจริญ</item>
     </string-array>
 
