@@ -52,7 +52,7 @@ public class ChangeProfileActivity extends Fragment implements View.OnClickListe
 
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
-                            .replace(R.id.container, new MainActivity.PlaceholderFragment().newInstance(1))
+                            .replace(R.id.container, new HomeActivity())
                             .commit();
                 }else{
                     Toast.makeText(getActivity(), "Update fail.", Toast.LENGTH_LONG).show();
