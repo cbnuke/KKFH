@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * Created by cbnuke on 11/1/13 AD.
  */
-public class RouteActivity extends Fragment implements LocationListener{
+public class RouteActivity extends Fragment {
     private MapView mMapView;
     private GoogleMap mMap;
     private Bundle mBundle;
@@ -77,27 +78,4 @@ public class RouteActivity extends Fragment implements LocationListener{
         mMapView.onDestroy();
         super.onDestroy();
     }
-
-    @Override
-    public void onLocationChanged(Location loc) {
-        CameraUpdate center=CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(),loc.getLongitude()));
-
-        mMap.moveCamera(center);
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(13));
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }
-}
+ }
