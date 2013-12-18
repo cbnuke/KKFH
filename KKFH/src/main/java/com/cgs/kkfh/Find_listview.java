@@ -72,7 +72,7 @@ public class Find_listview extends Fragment implements OnClickListener {
             StrictMode.setThreadPolicy(policy);
         }
 
-        this.URL = "http://kunmee.com/gcon/waterzero.php?id="+l_id;
+        this.URL = "http://kunmee.com/gcon/watercenter.php?id="+l_id;
 
         ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
 
