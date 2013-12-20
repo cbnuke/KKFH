@@ -95,7 +95,6 @@ public class MainActivity extends Activity
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         final AlertDialog.Builder adb = new AlertDialog.Builder(this);
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            adb.setIcon(R.drawable.ic_launcher);
             adb.setTitle(getString(R.string.app_name));
             adb.setMessage(getString(R.string.app_exit));
             adb.setNegativeButton(getString(R.string.app_exit_y), new AlertDialog.OnClickListener() {

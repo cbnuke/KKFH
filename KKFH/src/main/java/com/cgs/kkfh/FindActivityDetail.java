@@ -65,18 +65,13 @@ public class FindActivityDetail extends Fragment {
             }
         });
 
-        mTitleText = (TextView) view.findViewById(R.id.titleText);
-        mDateText = (TextView) view.findViewById(R.id.dateText);
-        mDescriptionText = (TextView) view.findViewById(R.id.descriptionText);
-        mImageView = (ImageView) view.findViewById(R.id.list_image2);
+        mTitleText = (TextView) view.findViewById(R.id.tvName_find3);
+        //mDateText = (TextView) view.findViewById(R.id.dateText);
+        mDescriptionText = (TextView) view.findViewById(R.id.tvAdd_find3);
 
-        String url = "http://farmacia-store.com/lotte/img/f" + imgText + ".jpg";
-
-        ImageLoader imageLoader = new ImageLoader(getActivity());
-        imageLoader.DisplayImage(url,mImageView,1);
 
         mTitleText.setText(title);
-        mDateText.setText(date);
+        //mDateText.setText(date);
         mDescriptionText.setText(description);
 
         return view;

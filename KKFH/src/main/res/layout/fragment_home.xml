@@ -21,7 +21,11 @@
         android:gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bg_new"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp">
 
         <Button
             android:layout_width="150dp"

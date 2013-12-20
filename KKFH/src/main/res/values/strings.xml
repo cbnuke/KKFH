@@ -25,6 +25,17 @@
     <string name="water_level">Water level at your location.</string>
     <string name="meter">meter</string>
 
+    <string name="find_current">People</string>
+    <string name="find_max">Capacity</string>
+
+    <!--fragment_find3-->
+    <string name="tvAdd_find3">Address</string>
+    <string name="tvHP_find3">List 1</string>
+    <string name="tvD_find3">List 2</string>
+    <string name="tvH_find3">List 3</string>
+    <string name="tvG_find3">List 4</string>
+    <string name="btnG_find3">Get directions</string>
+
     <!--string Toast RegisterActivity-->
     <string name="toast1_RegActivity">Please fill all of information.</string>
     <string name="toast2_RegActivity">Register complete.</string>

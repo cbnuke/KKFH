@@ -11,6 +11,7 @@
         android:layout_height="fill_parent">
 
         <LinearLayout
+            android:paddingBottom="8dp"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -20,22 +21,23 @@
             android:layout_marginTop="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Producer"
                 android:singleLine="false"
-                android:typeface="monospace" />
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_danger"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher" />
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -46,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Near River"
+                        android:text="Jimmy"
                         android:singleLine="false" />
 
                     <TextView
@@ -60,6 +62,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:paddingBottom="8dp"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -69,82 +72,23 @@
             android:layout_marginTop="8dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Programmer"
-                android:singleLine="false"
-                android:layout_gravity="center_horizontal"
-                android:typeface="monospace" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/linearLayout"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="80dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Near River" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher"
-                    android:layout_alignBottom="@+id/linearLayout"
-                    android:layout_alignParentRight="true" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_card_ui"
-            android:layout_marginTop="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Designer"
                 android:singleLine="false"
-                android:typeface="monospace" />
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_success"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher" />
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -155,18 +99,273 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Near River" />
+                        android:text="Kanitin Korngnork"
+                        android:singleLine="false" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Small Text" />
+                        android:text="facebook.com/cbnuke"
+                        android:textColor="@android:color/secondary_text_dark" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card_ui"
+            android:layout_marginTop="8dp">
 
+            <TextView
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Designer"
+                android:singleLine="false"
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_success"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Lot Lotte"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="facebook.com/cbnuke"
+                        android:textColor="@android:color/secondary_text_dark" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card_ui"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Programmer"
+                android:singleLine="false"
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_primary"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Peeraphob Chaiyaprom"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="facebook.com/cbnuke"
+                        android:textColor="@android:color/secondary_text_dark" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card_ui"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Programmer"
+                android:singleLine="false"
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_primary"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Aon Wittawat"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="facebook.com/cbnuke"
+                        android:textColor="@android:color/secondary_text_dark" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card_ui"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Programmer"
+                android:singleLine="false"
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_primary"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Jayj SKwisky"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="facebook.com/cbnuke"
+                        android:textColor="@android:color/secondary_text_dark" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card_ui"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Programmer"
+                android:singleLine="false"
+                android:typeface="monospace"
+                android:paddingLeft="5dp"
+                android:background="@drawable/selector_btn_primary"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="-"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="facebook.com/cbnuke"
+                        android:textColor="@android:color/secondary_text_dark" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
