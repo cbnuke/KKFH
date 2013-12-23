@@ -34,19 +34,13 @@ public class FindActivity extends Fragment implements View.OnClickListener {
         Button click = (Button) view.findViewById(R.id.eiei);
         click.setOnClickListener(this);
 
-        spinner = (Spinner) view.findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.province_spin, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
         return view;
     }
 
     @Override
     public void onClick(View view) {
         Bundle data = new Bundle();
-        data.putString("l_id", String.valueOf(spinner.getSelectedItemId()+1));
+        data.putString("l_id", "6");
         data.putString("people", txt_people.getText().toString());
         data.putString("patient_people", txt_patient.getText().toString());
 

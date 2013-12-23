@@ -32,10 +32,17 @@
             android:id="@+id/back"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ย้อนกลับ"
+            android:text="Back"
             android:background="@drawable/selector_btn_primary_long"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_vertical"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

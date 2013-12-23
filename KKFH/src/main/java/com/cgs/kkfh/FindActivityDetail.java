@@ -37,26 +37,25 @@ public class FindActivityDetail extends Fragment {
     private TextView mTitleText;
     private TextView mDateText;
     private TextView mDescriptionText;
-    private ImageView mImageView;
-    private Button eiei;
-    // XML node keys
-    static String KEY_ID = "topicID";
-    static String KEY_TITLE = "title";
-    static String KEY_DESCRIPTION = "description";
-    static String KEY_THUMB_URL = "img";
-    static String KEY_UPDATE = "updated";
+    private TextView mMaxPeople;
+    private TextView mCurrentPeople;
+    private Button btn;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_find3, container, false);
 
         // Get XML values from previous Bundle
-        String title = this.getArguments().getString(KEY_TITLE);
-        String date = this.getArguments().getString(KEY_UPDATE);
-        String description = this.getArguments().getString(KEY_DESCRIPTION);
-        String imgText = this.getArguments().getString(KEY_THUMB_URL);
-        eiei = (Button) view.findViewById(R.id.eiei);
-        eiei.setOnClickListener(new OnClickListener() {
+        String title = this.getArguments().getString(Find_listview.KEY_NAME);
+        String date = this.getArguments().getString(Find_listview.KEY_DATE);
+        String description = this.getArguments().getString(Find_listview.KEY_DESCRIPTION);
+        String current = this.getArguments().getString(Find_listview.KEY_CURRENT_PEOPLE);
+        String max = this.getArguments().getString(Find_listview.KEY_MAX_PEOPLE);
+
+        btn = (Button) view.findViewById(R.id.button);
+        btn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
@@ -66,13 +65,17 @@ public class FindActivityDetail extends Fragment {
         });
 
         mTitleText = (TextView) view.findViewById(R.id.tvName_find3);
-        //mDateText = (TextView) view.findViewById(R.id.dateText);
+        mDateText = (TextView) view.findViewById(R.id.tvDoc_find3);
         mDescriptionText = (TextView) view.findViewById(R.id.tvAdd_find3);
+        mCurrentPeople = (TextView) view.findViewById(R.id.tvPeo_find3);
+        mMaxPeople = (TextView) view.findViewById(R.id.tvGet_find3);
 
 
         mTitleText.setText(title);
-        //mDateText.setText(date);
+        mDateText.setText(date);
         mDescriptionText.setText(description);
+        mCurrentPeople.setText(current);
+        mMaxPeople.setText(max);
 
         return view;
     }

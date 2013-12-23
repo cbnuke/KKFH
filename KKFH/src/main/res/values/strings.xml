@@ -30,10 +30,10 @@
 
     <!--fragment_find3-->
     <string name="tvAdd_find3">Address</string>
-    <string name="tvHP_find3">List 1</string>
-    <string name="tvD_find3">List 2</string>
-    <string name="tvH_find3">List 3</string>
-    <string name="tvG_find3">List 4</string>
+    <string name="tvHP_find3">Detail</string>
+    <string name="tvD_find3">Create</string>
+    <string name="tvH_find3">People</string>
+    <string name="tvG_find3">Capacity</string>
     <string name="btnG_find3">Get directions</string>
 
     <!--string Toast RegisterActivity-->

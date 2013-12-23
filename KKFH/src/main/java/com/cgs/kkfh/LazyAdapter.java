@@ -46,11 +46,10 @@ public class LazyAdapter extends BaseAdapter {
 
             vi = inflater.inflate(R.layout.fragment_findlist, null);
 
-        TextView mTitle = (TextView) vi.findViewById(R.id.title); // title
-        TextView mUpdate = (TextView) vi.findViewById(R.id.update); // update
-        TextView mDescription = (TextView) vi.findViewById(R.id.description); // update
-        TextView mImg = (TextView) vi.findViewById(R.id.img); // img text
-        ImageView mThumb_image = (ImageView) vi.findViewById(R.id.list_image); // image
+        TextView mTitle = (TextView) vi.findViewById(R.id.txtF_name);
+        TextView mDescription = (TextView) vi.findViewById(R.id.txtF_des);
+        TextView mMax = (TextView) vi.findViewById(R.id.txtF_max);
+        TextView mCurrent = (TextView) vi.findViewById(R.id.txtF_current);
 
 
         HashMap<String, String> news = new HashMap<String, String>();
@@ -59,9 +58,9 @@ public class LazyAdapter extends BaseAdapter {
         // Setting all values in listview
         mTitle.setText(news.get(Find_listview.KEY_NAME));
         mDescription.setText(news.get(Find_listview.KEY_DESCRIPTION));
-        mUpdate.setText(news.get(Find_listview.KEY_MAX_PEOPLE));
+        mMax.setText(news.get(Find_listview.KEY_MAX_PEOPLE));
+        mCurrent.setText(news.get(Find_listview.KEY_CURRENT_PEOPLE));
 
-        imageLoader.DisplayImage(news.get(Find_listview.KEY_THUMB_URL),mThumb_image);
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_TITLE));
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_ID));
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_THUMB_URL));
