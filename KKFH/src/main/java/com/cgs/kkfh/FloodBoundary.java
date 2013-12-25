@@ -248,8 +248,8 @@ public class FloodBoundary extends Fragment {
 //                        Polygon polygon = mMap.addPolygon(rectOptions);
 
                         //Animated to current location
-                        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(16.489271507000069, 102.80697096000006), 14));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(16.475496627000041, 102.78394238500005), 18));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(16.489271507000069, 102.80697096000006), 14));
+                        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(16.475496627000041, 102.78394238500005), 18));
                     }
 
                     //Close progress box

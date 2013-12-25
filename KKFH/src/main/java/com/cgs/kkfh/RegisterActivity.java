@@ -37,9 +37,12 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             String phone = txt_phone.getText().toString();
             String disease = txt_disease.getText().toString();
 
-            if (name.isEmpty() || phone.isEmpty() || disease.isEmpty()) {
+            if (name.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(getApplicationContext(), getString(R.string.toast1_RegActivity), Toast.LENGTH_LONG).show();
             } else {
+                if (disease.isEmpty()) {
+                    disease = "none";
+                }
                 SQLiteControl db = new SQLiteControl(this);
                 db.getWritableDatabase();
                 if (db.insertData(name, phone, disease)) {
