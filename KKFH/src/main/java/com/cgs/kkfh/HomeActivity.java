@@ -68,7 +68,7 @@ public class HomeActivity extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnH_report:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new ReportActivity())
+                        .replace(R.id.container, new FloodBoundary())
                         .commit();
                 break;
         }

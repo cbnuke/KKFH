@@ -1,9 +1,13 @@
 package com.cgs.kkfh;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Camera;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -26,6 +30,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -49,6 +55,17 @@ public class RouteActivity extends Fragment {
     private GoogleMap mMap;
     private Bundle mBundle;
 
+    static final String KEY_D_LAT = "d_lat";
+    static final String KEY_D_LONG = "d_long";
+    static final String KEY_C_LAT = "c_lat";
+    static final String KEY_C_LONG = "c_long";
+    static final String KEY_WATER_LEVEL = "water_level";
+    static final String KEY_NAME = "name";
+
+    ProgressDialog dialog;
+
+    String mName;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View inflatedView = inflater.inflate(R.layout.fragment_route, container, false);
@@ -59,19 +76,26 @@ public class RouteActivity extends Fragment {
             // TODO handle this situation
         }
 
+        dialog = ProgressDialog.show(getActivity(), getString(R.string.loading), getString(R.string.please_wait), true);
         mMapView = (MapView) inflatedView.findViewById(R.id.map);
         mMapView.onCreate(mBundle);
         setUpMapIfNeeded(inflatedView);
 
-        LatLng test = new LatLng(16.44476176300003, 102.81387556000004);
+        //Receive data
+        String c_lat = this.getArguments().getString(KEY_C_LAT);
+        String c_long = this.getArguments().getString(KEY_C_LONG);
+        String d_lat = this.getArguments().getString(KEY_D_LAT);
+        String d_long = this.getArguments().getString(KEY_D_LONG);
+        String water_level = this.getArguments().getString(KEY_WATER_LEVEL);
+        mName = this.getArguments().getString(KEY_NAME);
 
+        Log.d("KKFHD", c_lat + "||" + c_long);
 
-        //Route Asyntask
-//        RouteActivityAsynTask obj = new RouteActivityAsynTask("11445173.830729133", "1856251.5078629067",
-//                "11446205.730610982", "1859681.6195071994", "0.1");
+        RouteActivityAsynTask obj = new RouteActivityAsynTask("102.78394238500005", "16.475496627000041",
+                d_long, d_lat, water_level);
 
-        RouteActivityAsynTask obj = new RouteActivityAsynTask("102.81387556000004", "16.44476176300003",
-                "102.82301550400007", "16.47401208200006", "0.1");
+//        RouteActivityAsynTask obj = new RouteActivityAsynTask(c_long, c_lat,
+//                d_long, d_lat, water_level);
 
         obj.execute();
 
@@ -96,11 +120,23 @@ public class RouteActivity extends Fragment {
         PolylineOptions rectOptions = new PolylineOptions();
 
         for (int i = 0; i < data.size(); i++) {
-            rectOptions.add(data.get(i));
+            rectOptions.add(data.get(i)).color(Color.CYAN);
         }
 
         // Get back the mutable Polyline
         Polyline polyline = mMap.addPolyline(rectOptions);
+
+        //Draw marker
+        mMap.addMarker(new MarkerOptions()
+                .position(data.get(0))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_action_location_found))
+                .anchor(0.5f, 0.5f));
+        mMap.addMarker(new MarkerOptions()
+                .position(data.get(data.size() - 1))
+                .title(mName));
+
+        //Animated to current location
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(data.get(0), 14));
     }
 
     @Override
@@ -136,7 +172,7 @@ public class RouteActivity extends Fragment {
         private String C_LAT, C_LONG, D_LAT, D_LONG, WATER_LEVEL;
 
         GetRouteData obj;
-        int MAX_CHECK_LOOP = 200;
+        int MAX_CHECK_LOOP = 20;
         String json_data;
 
         public RouteActivityAsynTask(String c_lat, String c_long, String d_lat, String d_long, String water_level) {
@@ -158,6 +194,12 @@ public class RouteActivity extends Fragment {
 
             while (obj.CheckData(obj.jobId) && MAX_CHECK_LOOP > 0) {
                 MAX_CHECK_LOOP--;
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                    Log.d("KKFHD", "Error get data route");
+                }
+
                 if (obj.jobStatus.equalsIgnoreCase("esriJobSucceeded")) {
                     json_data = obj.ResultData(obj.jobId);
                     break;
@@ -199,16 +241,33 @@ public class RouteActivity extends Fragment {
                                 Double.parseDouble(pointArr.getJSONArray(i).getString(0))));
                         String x = pointArr.getJSONArray(i).getString(1);
                         String y = pointArr.getJSONArray(i).getString(0);
-                        Log.d("KKFHD", x + "," + y);
                     }
+
+                    //Close progress box
+                    dialog.dismiss();
 
                     DrawRoute(data);
 
                 } catch (JSONException e) {
                     Log.e("KKFHD", "Error parsing data " + e.toString());
                 }
-            }else{
-                Toast.makeText(getActivity(),"",Toast.LENGTH_LONG).show();
+            } else {
+                //Close progress box
+                dialog.dismiss();
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity())
+                        .setTitle(getString(R.string.fail_helpActivity))
+                        .setMessage(getString(R.string.failMsg_navigation));
+                builder1.setPositiveButton(getString(R.string.ok_helpActivity), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Fragment fm = new HomeActivity();
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.container, fm);
+                        ft.commit();
+                    }
+                });
+                builder1.show();
             }
         }
 

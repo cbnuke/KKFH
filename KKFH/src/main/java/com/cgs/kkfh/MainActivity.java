@@ -122,7 +122,7 @@ public class MainActivity extends Activity
                 break;
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, new RouteActivity())
+                        .replace(R.id.container, new FloodBoundary())
                         .commit();
                 onSectionAttached(2);
                 break;
@@ -147,7 +147,7 @@ public class MainActivity extends Activity
                 mTitle = getString(R.string.app_name);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.title_section5);
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);

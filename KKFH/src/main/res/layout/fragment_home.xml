@@ -28,22 +28,22 @@
         android:padding="10dp">
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:text="@string/help"
             android:id="@+id/btnH_help"
             android:singleLine="false"
             android:background="@drawable/selector_btn_danger"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="4dp"
             android:textColor="#ffffff" />
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:text="@string/report"
             android:id="@+id/btnH_report"
             android:background="@drawable/selector_btn_primary"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="4dp"
             android:textColor="#ffffff" />
     </LinearLayout>
 </RelativeLayout>

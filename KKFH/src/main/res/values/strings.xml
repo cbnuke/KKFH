@@ -6,6 +6,7 @@
     <string name="title_section2">Navigation</string>
     <string name="title_section3">Find Evacuation centers</string>
     <string name="title_section4">About us</string>
+    <string name="title_section5">Flood boundary</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -19,7 +20,7 @@
     <string name="regbtn_signup">Sign Up</string>
     <string name="regbtn_signup_change">Update</string>
     <string name="help">Help me</string>
-    <string name="report">Report flood</string>
+    <string name="report">Flood boundary</string>
     <string name="send">Send</string>
     <string name="back">Back</string>
     <string name="water_level">Water level at your location.</string>
@@ -66,89 +67,19 @@
     <string name="failMsg_helpActivity">Can\'t find your location please try again</string>
     <string name="ok_helpActivity">OK</string>
 
+    <!--string Text RouteActivity-->
+    <string name="failMsg_navigation">Can\'t route please use "Help me"</string>
+    <string name="loading">Loading</string>
+    <string name="please_wait">Please wait</string>
+
+    <!--string Text FloodBoundary-->
+    <string name="title_findActivityDetail">Water Level</string>
+    <string name="msg_findActivityDetail">How much is water level in your location(meter)</string>
+
+
     <!--string Toast ChangeProfileActivity-->
     <string name="toast1_changeProfile">Please fill all of information.</string>
     <string name="toast2_changeProfile">Update complete.</string>
     <string name="toast3_changeProfile">Update fail.</string>
-
-    <string-array name="province_spin">
-        <item>กรุงเทพมหานคร</item>
-        <item>กระบี่</item>
-        <item>กาญจนบุรี</item>
-        <item>กาฬสินธุ์</item>
-        <item>กำแพงเพชร</item>
-        <item>ขอนแก่น</item>
-        <item>จันทบุรี</item>
-        <item>ฉะเชิงเทรา</item>
-        <item>ชลบุรี</item>
-        <item>ชัยนาท</item>
-        <item>ชัยภูมิ</item>
-        <item>ชุมพร</item>
-        <item>เชียงราย</item>
-        <item>เชียงใหม่</item>
-        <item>ตรัง</item>
-        <item>ตราด</item>
-        <item>ตาก</item>
-        <item>นครนายก</item>
-        <item>นครปฐม</item>
-        <item>นครพนม</item>
-        <item>นครราชสีมา</item>
-        <item>นครศรีธรรมราช</item>
-        <item>นครสวรรค์</item>
-        <item>นนทบุรี</item>
-        <item>นราธิวาส</item>
-        <item>น่าน</item>
-        <item>บึงกาฬ</item>
-        <item>บุรีรัมย์</item>
-        <item>ปทุมธานี</item>
-        <item>ประจวบคีรีขันธ์</item>
-        <item>ปราจีนบุรี</item>
-        <item>ปัตตานี</item>
-        <item>พระนครศรีอยุธยา</item>
-        <item>พังงา</item>
-        <item>พัทลุง</item>
-        <item>พิจิตร</item>
-        <item>พิษณุโลก</item>
-        <item>เพชรบุร์</item>
-        <item>เพชรบูรณ์</item>
-        <item>แพร่</item>
-        <item>พะเยา</item>
-        <item>ภูเก็ต</item>
-        <item>มหาสารคาม</item>
-        <item>มุกดาหาร</item>
-        <item>แม่ฮ่องสอน</item>
-        <item>ยะลา</item>
-        <item>ยโสธร</item>
-        <item>ร้อยเอ็ด</item>
-        <item>ระนอง</item>
-        <item>ระยอง</item>
-        <item>ราชบุรี</item>
-        <item>ลพบุรี</item>
-        <item>ลำปาง</item>
-        <item>ลำพูน</item>
-        <item>เลย</item>
-        <item>ศรีสะเกษ</item>
-        <item>สกลนคร</item>
-        <item>สงขลา</item>
-        <item>สตูล</item>
-        <item>สมุทรปราการ</item>
-        <item>สมุทรสงคราม</item>
-        <item>สมุทรสาคร</item>
-        <item>สระแก้ว</item>
-        <item>สระบุรี</item>
-        <item>สิงห์บุรี</item>
-        <item>สุโขทัย</item>
-        <item>สุพรรณบุรี</item>
-        <item>สุราษฎร์ธานี</item>
-        <item>สุรินทร์</item>
-        <item>หนองคาย</item>
-        <item>หนองบัวลำภู</item>
-        <item>อ่างทอง</item>
-        <item>อุดรธานี</item>
-        <item>อุทัยธานี</item>
-        <item>อุตรดิตถ์</item>
-        <item>อุบลราชธานี</item>
-        <item>อำนาจเจริญ</item>
-    </string-array>
 
 </resources>

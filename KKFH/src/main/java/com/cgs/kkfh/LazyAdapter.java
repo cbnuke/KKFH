@@ -50,6 +50,8 @@ public class LazyAdapter extends BaseAdapter {
         TextView mDescription = (TextView) vi.findViewById(R.id.txtF_des);
         TextView mMax = (TextView) vi.findViewById(R.id.txtF_max);
         TextView mCurrent = (TextView) vi.findViewById(R.id.txtF_current);
+        TextView mLat = (TextView) vi.findViewById(R.id.txtF_lat);
+        TextView mLong = (TextView) vi.findViewById(R.id.txtF_long);
 
 
         HashMap<String, String> news = new HashMap<String, String>();
@@ -60,6 +62,8 @@ public class LazyAdapter extends BaseAdapter {
         mDescription.setText(news.get(Find_listview.KEY_DESCRIPTION));
         mMax.setText(news.get(Find_listview.KEY_MAX_PEOPLE));
         mCurrent.setText(news.get(Find_listview.KEY_CURRENT_PEOPLE));
+        mLat.setText(news.get(Find_listview.KEY_W_LAT));
+        mLong.setText(news.get(Find_listview.KEY_W_LONG));
 
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_TITLE));
 //        Log.d("KKFHD", " TEXT  " + news.get(Find_listview.KEY_ID));

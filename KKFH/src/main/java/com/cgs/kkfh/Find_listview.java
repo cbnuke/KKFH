@@ -182,10 +182,10 @@ public class Find_listview extends Fragment implements OnClickListener {
                             .findViewById(R.id.txtF_max)).getText().toString();
 
                     String w_lat = ((TextView) view
-                            .findViewById(R.id.txtF_max)).getText().toString();
+                            .findViewById(R.id.txtF_lat)).getText().toString();
 
                     String w_long = ((TextView) view
-                            .findViewById(R.id.txtF_max)).getText().toString();
+                            .findViewById(R.id.txtF_long)).getText().toString();
 
                     Bundle data = new Bundle();
                     data.putString(KEY_NAME, title);
